@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Contributor;
 
+use App\Announcement;
 use App\FieldObservation;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,7 @@ class DashboardController extends Controller
             'pendingObservationCount' => FieldObservation::pending()->createdBy($user)->count(),
             'approvedObservationCount' => FieldObservation::approved()->createdBy($user)->count(),
             'unidentifiableObservationCount' => FieldObservation::unidentifiable()->createdBy($user)->count(),
+            'lastAnnouncement' => Announcement::latest()->current()->first(),
         ]);
     }
 }

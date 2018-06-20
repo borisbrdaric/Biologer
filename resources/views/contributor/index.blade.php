@@ -1,6 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+@if($lastAnnouncement && $lastAnnouncement->isNotRead())
+    <nz-announcement :announcement="{{ $lastAnnouncement }}"></nz-announcement>
+@endif
+
 <div class="level box">
     <div class="level-item has-text-centered">
         <div>
